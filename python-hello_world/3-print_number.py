@@ -4,5 +4,5 @@ This script prints the integer stored in the variable number,
 followed by batttery street, followed by a new line
 """
 # pylint: disable=invalid-name
-number = 98
-print(number, "Battery Street", sep= " ")
+number = 333
+print(f"{number} Battery Street")
