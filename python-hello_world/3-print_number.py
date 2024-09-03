@@ -5,4 +5,4 @@ followed by batttery street, followed by a new line
 """
 # pylint: disable=invalid-name
 number = 98
-print(f"{number} Battery Street")
+print(number, "Battery Street", sep= " ")
