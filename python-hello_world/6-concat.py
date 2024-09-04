@@ -1,5 +1,5 @@
 #!/usr/bin/python3
+"""This script for concation of str1 and str2"""
+# pylint: disable=invalid-name
 str1, str2 = "Holberton", "School"
-print(f"Welcome to {str1} {str2}!")
-str1, str2 = "Battery", "Street"
-print(f"Welcome to {str1} {str2}!")
+print("Welcome to {}!".format(str1 + " " + str2))
