@@ -14,3 +14,4 @@ while number != 10:
     else:
         print(number, "is negative")
     number = random.randint(-10, 10)
+print("Number is 10, terminating script.")
