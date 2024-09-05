@@ -6,12 +6,9 @@ each time it is executed
 # pylint: disable=invalid-name
 import random
 number = random.randint(-10, 10)
-while number != 10:
-    if number > 0:
-        print(number, "is positive")
-    elif number == 0:
-        print(number, "is zero")
-    else:
-        print(number, "is negative")
-    number = random.randint(-10, 10)
-print("Number is 10, terminating script.")
+if number > 0:
+    print(number, "is positive")
+elif number == 0:
+    print(number, "is zero")
+else:
+    print(number, "is negative")
