@@ -4,5 +4,6 @@ This script prints all numbers from 0 to 98 in
 decimal and in hexadecimal
 """
 # pylint: disable=invalid-name
-for number in range(0, 98):
-    print(f"{number} = {hex(number)}", end="")
+# pylint: disable=consider-using-f-string
+for number in range(0, 99):
+    print("{} = {}".format(number, hex(number)))
