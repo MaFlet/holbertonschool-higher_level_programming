@@ -7,7 +7,7 @@ of 2 digits
 # pylint: disable=consider-using-f-string
 for number in range(0, 10):
     for number2 in range(number + 1, 10):
-        if number < 9 or number2 < 9:
+        if number < 8 or number2 < 9:
             print("{:02d}, ".format(number * 10 + number2), end="")
         else:
             print("{:02d}".format(number * 10 + number2))
