@@ -4,6 +4,8 @@ This script that prints numbers from 0 to 99
 """
 # pylint: disable=invalid-name
 # pylint: disable=consider-using-f-string
-for number in range(0,100):
+for number in range(0, 100):
     if number < 99:
         print("{:02d}, ".format(number), end="")
+    else:
+        print("{:02d}, ".format(number))
