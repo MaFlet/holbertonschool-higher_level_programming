@@ -13,8 +13,8 @@ def uppercase(my_string):
     """
     new_string = ''
     for i in my_string:
-        if ord(i) >= 97 and ord(i) < 123:
-            new_string = new_string + chr(ord(i) - 32)
+        if 'a' <= i <= 'z':
+            new_string += chr(ord(i) - 32)
         else:
-            new_string = new_string + i
+            new_string += i
     print('{}'.format(new_string))
