@@ -11,9 +11,9 @@ def uppercase(my_string):
     """
     Function that print uppercase characters
     """
+    result = []
     for letter in my_string:
         if ord(letter) >= 97 and ord(letter) <= 122:
             letter = chr(ord(letter) - 32)
-        print("{}".format(letter), end="")
-
-    print()
+        result.append(letter)
+    print("{}".format("".join(result)))
