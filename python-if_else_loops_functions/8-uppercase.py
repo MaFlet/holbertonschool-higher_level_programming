@@ -11,10 +11,5 @@ def uppercase(my_string):
     """
     Function that prints uppercase characters.
     """
-    new_string = ''
-    for i in my_string:
-        if 'a' <= i <= 'z':
-            new_string += chr(ord(i) - 32)
-        else:
-            new_string += i
-    print('{}'.format(new_string))
+    print('{}'.format(''.join(chr(ord(i) - 32)
+                              if 'a' <= i <= 'z' else i for i in my_string)))
