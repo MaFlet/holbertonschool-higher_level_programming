@@ -11,9 +11,10 @@ def uppercase(my_string):
     """
     Function that prints uppercase characters.
     """
+    result = ""
     for letter in my_string:
         character = ord(letter)
         if 97 <= character <= 122:
             character -= 32
-        print("{}".format(chr(character)), end="")
-    print()
+        result += chr(character)
+    print("{}".format(result))
