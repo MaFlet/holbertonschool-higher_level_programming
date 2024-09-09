@@ -15,4 +15,4 @@ def uppercase(str):
         if 'a' <= char <= 'z':
             char = chr(ord(char) - 32)
         print("{}".format(char), end="")
-    print()
+    print("")
