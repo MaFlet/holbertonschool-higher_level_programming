@@ -8,4 +8,4 @@ Script that prints all integers of a list
 def print_list_integer(my_list=[]):
     """Function to print list of all integers"""
     for number in my_list:
-        print("{}".format(number))
+        print("{:d}".format(number))
