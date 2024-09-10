@@ -11,5 +11,5 @@ reverse order
 def print_reversed_list_integer(my_list=[]):
     """Prints all integers in reverse order"""
     if my_list:
-        for number in range(len(my_list) -1, -1, -1):
+        for number in range(len(my_list) - 1, - 1, - 1):
             print("{:d}".format(my_list[number]))
