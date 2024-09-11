@@ -10,7 +10,7 @@ Script that finds the biggest integer of a list
 def max_integer(my_list=[]):
     """Search biggest integer of list"""
     if not my_list:
-        return (0, None)
+        return None
     biggest = my_list[0]
     for value in my_list:
         if value > biggest:
