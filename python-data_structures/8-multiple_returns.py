@@ -11,5 +11,5 @@ and its first character
 def multiple_returns(sentence):
     """Length of string and its first character"""
     if not sentence:
-        return None
+        return (0, None)
     return (len(sentence), sentence[0])
