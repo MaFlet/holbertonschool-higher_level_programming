@@ -9,22 +9,16 @@ Script the divides element by element 2 lists
 
 def list_division(my_list_1, my_list_2, list_length):
     """Dividing elements between 2 lists"""
-    new_list = []
+    list = [0] * list_length
     for i in range(list_length):
         try:
-            num1 = my_list_1[i]
-            num2 = my_list_2[i]
-            if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
-                print("wrong type")
-                new_list.append(0)
-            else:
-                new_list.append(num1 / num2)
+            list[i] = my_list_1[i] / my_list_2[i]
         except ZeroDivisionError:
             print("division by 0")
-            new_list.append(0)
+        except TypeError:
+            print("wrong type")
         except IndexError:
             print("out of range")
-            new_list.append(0)
         finally:
             pass
-        return new_list
+    return list
