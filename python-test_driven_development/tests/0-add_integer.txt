@@ -9,3 +9,13 @@ Usage:
 100
 >>> add_integer(100.3, -2)
 98
+>>> add_integer(-4.4, -5.5)
+-9
+>>> type(add_integer(5.6, 5.9))
+<class 'int'>
+>>> add_integer("Holberton", 4)
+Traceback (most recent call last):
+TypeError: a must be an integer
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+TypeError: b must be an integer
