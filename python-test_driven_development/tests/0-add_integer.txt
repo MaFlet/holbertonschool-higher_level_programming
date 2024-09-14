@@ -1,0 +1,52 @@
+"add_integer module"
+Using "add_integer"
+>>>add_integer = __import__('0-add_integer').add_integer
+Usage:
+>>> add_integer(1, 2)
+3
+>>> add_integer(100, -2)
+98
+>>> add_integer(2)
+100
+>>> add_integer(100.3, -2)
+98
+
+2)Adding 2 integers
+>>>add_integer(100, -2)
+output: 98
+
+3)One integer and a default value (98)
+>>>add_integer(2)
+output: 100
+
+4)One float with decimal(100.3) and negative integer (-2)
+>>>add_integer(100.3, -2)
+output: 98
+
+5)Integer and string
+>>>add_integer(4, "School")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+6)String and Integer
+>>>add_integer("Holberton", int)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+7)No integer
+>>>add_integer()
+Traceback (most recent call last):
+TypeError: add_integer(None)
+
+8)String
+>>>add_integer("School")
+Traceback (most recent call last):
+Type Error: add_integer(None)
+
+9) Negative integer and negative integer
+>>>add_integer(-4, -4)
+Output: -8
+
+10)Float(Decimal) and Float(Decimal)
+>>>add_integer(100.3, 2.3)
+output: 102.6
