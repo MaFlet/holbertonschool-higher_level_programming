@@ -6,6 +6,7 @@ only integers
 # pylint: disable=invalid-name
 # pylint: disable=consider-using-f-string
 # pylint: disable=dangerous-default-value
+import traceback
 
 
 def safe_print_list_integers(my_list=[], x=0):
@@ -18,7 +19,7 @@ def safe_print_list_integers(my_list=[], x=0):
                 print("{:d}".format(element), end="")
                 count += 1
     except IndexError:
-        pass
+        traceback.print_exc()
     finally:
         print()
     return count
