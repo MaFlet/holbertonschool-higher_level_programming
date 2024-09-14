@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Script that replaces or adds key/value in a 
+Script that replaces or adds key/value in a
 dictionary
 """
 # pylint: disable=invalid-name
