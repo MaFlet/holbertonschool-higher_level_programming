@@ -18,6 +18,7 @@ def safe_print_list_integers(my_list=[], x=0):
                 print("{:d}".format(element), end="")
                 count += 1
     except IndexError:
+        print("Traceback (most recent call last):", end="")
         print("IndexError: list index out of range", end="")
     finally:
         print()
