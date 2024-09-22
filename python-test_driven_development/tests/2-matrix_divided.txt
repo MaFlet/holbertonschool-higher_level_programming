@@ -45,4 +45,4 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 >>> matrix_divided([["string"], ["here"]], 2)
 Traceback (most recent call last):
-TypeError: matrix must be matrix (list of lists) of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
