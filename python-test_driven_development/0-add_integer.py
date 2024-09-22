@@ -12,7 +12,7 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
     if a > 1e308 or b > 1e308:
-        raise OverflowError("number too large")
+        raise OverflowError
     a = int(a)
     b = int(b)
     return a + b
