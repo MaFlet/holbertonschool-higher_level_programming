@@ -47,13 +47,13 @@ Holberton School
 
 >>> text_indentation("Holberton. School? Is fun.")
 Holberton.
-
+$
 School?
-
+$
 Is fun.
 
 >>> text_indentation("This is a school: Holberton?")
 This is a school:
-
+$
 Holberton?
 
