@@ -11,7 +11,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
-        type(self).number_of_instances += 1
+        Rectangle.number_of_instances += 1
 
     def area(self):
         return self.__width * self.__height
@@ -46,16 +46,19 @@ class Rectangle:
         self.__height = value
 
     def __str__(self):
-        if self.width == 0 or self.height == 0:
-            return ""
         rectangle_str = ""
+        if self.width == 0 or self.height == 0:
+            return (rectangle_str)
         for i in range(self.height):
-            rectangle_str += "#" * self.width + "\n"
-        return rectangle_str.rstrip()
+            for j in range(self.width):
+                rectangle_str += str(self.print_symbol) 
+            rectangle_str += "\n"
+        rectangle_str = rectangle_str[:-1]
+        return (rectangle_str)
 
     def __repr__(self):
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
-        type(self).number_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
