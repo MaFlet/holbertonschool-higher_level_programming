@@ -30,3 +30,19 @@ Usage:
 >>> matrix_divided(None, None)
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided({9, 8, 7}, 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([None], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided(["string"], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+>>> matrix_divided([["string"], ["here"]], 2)
+Traceback (most recent call last):
+TypeError: matrix must be matrix (list of lists) of integers/floats
