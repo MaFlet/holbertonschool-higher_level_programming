@@ -39,11 +39,11 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
->>> matrix_divided(["string"], 2)
+>>> matrix_divided(["Holberton"], 2)
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
->>> matrix_divided([["string"], ["here"]], 2)
+>>> matrix_divided([["Holberton"], ["School"]], 2)
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
