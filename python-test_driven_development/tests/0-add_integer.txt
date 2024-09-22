@@ -51,8 +51,8 @@ TypeError: add_integer() missing 1 required positional argument: 'a'
 
 >>> add_integer(1e400, 5)
 Traceback (most recent call last):
-OverflowError
+    OverflowError: number too large
 
 >>> add_integer(5, 1e400)
 Traceback (most recent call last):
-OverflowError
+    OverflowError: number to large
