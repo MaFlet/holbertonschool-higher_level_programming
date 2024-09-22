@@ -8,20 +8,51 @@ Using "add_integer"
 Usage:
 >>> add_integer(1, 2)
 3
+
 >>> add_integer(100, -2)
 98
+
 >>> add_integer(2)
 100
+
 >>> add_integer(100.3, -2)
 98
+
 >>> add_integer(-4.4, -5.5)
 -9
+
 >>> type(add_integer(5.6, 5.9))
 <class 'int'>
+
 >>> add_integer("School", 4)
 Traceback (most recent call last):
 TypeError: a must be an integer
+
 >>> add_integer(4, "School")
 Traceback (most recent call last):
 TypeError: b must be an integer
 
+>>> add_integer(6)
+104
+
+>>> add_integer(6.4)
+104
+
+>>> add_integer("School")
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add_integer()
+Traceback (most recent call last):
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+>>> add_integer(5.9, 5.9)
+10
+
+>>> add_integer(1e400, 5)
+Traceback (most recent call last):
+OverflowError
+
+>>> add_integer(5, 1e400)
+Traceback (most recent call last):
+OverflowError
