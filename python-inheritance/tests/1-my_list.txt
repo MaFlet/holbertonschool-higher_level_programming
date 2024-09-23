@@ -3,7 +3,6 @@
 
 Using "print_sorted"
 ------------------
-    >>> MyList = __import__('1-my_list').MyList
 
 TEST CONDITIONS
 ==================
