@@ -4,7 +4,45 @@
 Using "BaseGeometry"
 ------------------
    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+   >>> bg = BaseGeometry()
 
 TEST CONDITIONS
 ==================
->>> cd ..
+Testing inistiating area
+***
+>>> try:
+...     bg.area()
+... except Exception as err:
+...     print(err)
+area() is not implemented
+
+Testing integer validator
+***
+>>> try:
+...     bg.integer_validator("n", 1)
+... except Exception as err:
+...     print(err)
+
+>>> try:
+...     bg.integer_validator("n", -1)
+... except Exception as err:
+...    print(err)
+n must be greater than 0
+
+>>> try:
+...     bg.integer_validator("n", 3.33)
+... except Exception as err:
+...    print(err)
+n must be an integer
+
+>>> try:
+...     bg.integer_validator("n", "Holberton")
+... except Exception as err:
+...     print(err)
+n must be an integer
+
+>>> try:
+...     bg.integer_validator("n", 0)
+... except Exception as err:
+...     print(err)
+n must be greater than 0
