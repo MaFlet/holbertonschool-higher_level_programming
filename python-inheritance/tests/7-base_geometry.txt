@@ -56,8 +56,6 @@ n must be an integer
 ...     print(err)
 n must be an integer
 
-Testing integer_validator with None
-
 >>> try:
 ...     bg.integer_validator(None, None)
 ... except Exception as err:
@@ -69,3 +67,21 @@ None must be an integer
 ... except Exception as err:
 ...     print(err)
 integer_validator() missing 1 required positional argument: 'value'
+
+>>> try:
+...     bg.integer_validator("n", [9])
+... except Exception as err:
+...     print(err)
+n must be an integer
+
+>>> try:
+...     bg.integer_validator("n", {9})
+... except Exception as err:
+...     print(err)
+n must be an integer
+
+>>> try:
+...     bg.integer_validator()
+... except Exception as err:
+...     print(err)
+integer_validator() missing 2 required positional arguments: 'name' and 'value'
