@@ -81,7 +81,14 @@ n must be an integer
 n must be an integer
 
 >>> try:
+...     bg.integer_validator("n", True)
+... except Exception as err:
+...     print(err)
+n must be an integer
+
+>>> try:
 ...     bg.integer_validator()
 ... except Exception as err:
 ...     print(err)
 integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
