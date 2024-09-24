@@ -8,6 +8,9 @@ Using "BaseGeometry"
 
 TEST CONDITIONS
 ==================
+>>> print(bg.__dict__)
+{}
+
 Testing inistiating area
 ***
 >>> try:
@@ -53,3 +56,16 @@ n must be an integer
 ...     print(err)
 n must be an integer
 
+Testing integer_validator with None
+
+>>> try:
+...     bg.integer_validator(None, None)
+... except Exception as err:
+...     print(err)
+None must be an integer
+
+>>> try:
+...     bg.integer_validator("n")
+... except Exception as err:
+...     print(err)
+integer_validator() missing 1 required positional argument: 'value'
