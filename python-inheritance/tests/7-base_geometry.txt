@@ -36,12 +36,6 @@ n must be greater than 0
 n must be an integer
 
 >>> try:
-...     bg.integer_validator("n", "Holberton")
-... except Exception as err:
-...     print(err)
-n must be an integer
-
->>> try:
 ...     bg.integer_validator("n", 0)
 ... except Exception as err:
 ...     print(err)
