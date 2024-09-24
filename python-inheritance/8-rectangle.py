@@ -7,7 +7,6 @@ in BaseGeometry
 # pylint: disable=consider-using-f-string
 # pylint: disable=dangerous-default-value
 
-
 class BaseGeometry:
     """Class for BaseGeometry"""
     def area(self):
@@ -34,3 +33,5 @@ class Rectangle(BaseGeometry):
 
 if __name__ == "__main__":
     print(issubclass(Rectangle, BaseGeometry))
+    rect = Rectangle(3, 4)
+    print(rect.area())
