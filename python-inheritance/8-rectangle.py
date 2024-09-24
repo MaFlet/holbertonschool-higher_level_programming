@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Script that write the class Rectangle inherited
-from BaseGeometry
+in BaseGeometry
 """
 # pylint: disable=invalid-name
 # pylint: disable=consider-using-f-string
