@@ -1,4 +1,5 @@
 import abc
+import math
 
 
 class Shape(metaclass=abc.ABCMeta):
@@ -15,17 +16,15 @@ class Shape(metaclass=abc.ABCMeta):
 class Circle(Shape):
     """Class Circle in Shape class"""
     def __init__(self, radius):
-        if radius < 0:
-            pass
         self.radius = radius
 
     def area(self):
         """Defining area method"""
-        return 3.14159265358979323846 * self.radius ** 2
+        return math.pi * abs(self.radius) ** 2
 
     def perimeter(self):
         """Defining perimeter method"""
-        return 2 * 3.14159265358979323846 * self.radius
+        return 2 * math.pi * abs(self.radius)
 
 
 class Rectangle(Shape):
