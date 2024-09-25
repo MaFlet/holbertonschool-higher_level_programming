@@ -19,11 +19,11 @@ class Circle(Shape):
 
     def area(self):
         """Defining area method"""
-        return 3.14159 * self.radius ** 2
+        return 3.14159265358979323846 * self.radius ** 2
 
     def perimeter(self):
         """Defining perimeter method"""
-        return 2 * 3.14159 * self.radius
+        return 2 * 3.14159265358979323846 * self.radius
 
 
 class Rectangle(Shape):
