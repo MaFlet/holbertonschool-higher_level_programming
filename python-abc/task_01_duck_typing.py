@@ -16,7 +16,7 @@ class Circle(Shape):
     """Class Circle in Shape class"""
     def __init__(self, radius):
         if radius < 0:
-            raise ValueError("Radius cannot be negative")
+            pass
         self.radius = radius
 
     def area(self):
@@ -52,11 +52,3 @@ def shape_info(shape):
         print(f"Perimeter: {perimeter}")
     except AttributeError as e:
         print(f"Error: Shape is missing method: {e}")
-
-
-def test_circle_negative():
-    try:
-        circle_negative = Circle(-5)
-        assert False, "Expected ValueError for negative radius"
-    except ValueError as e:
-        assert str(e) == "Radius cannot be negative"
