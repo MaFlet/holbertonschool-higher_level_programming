@@ -15,6 +15,8 @@ class Shape(metaclass=abc.ABCMeta):
 class Circle(Shape):
     """Class Circle in Shape class"""
     def __init__(self, radius):
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
         self.radius = radius
 
     def area(self):
