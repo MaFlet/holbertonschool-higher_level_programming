@@ -6,6 +6,10 @@ class CountedIterator:
         self.count = 0
 
 
+    def __iter__(self):
+        return self
+
+
     def get_count(self):
         """Defining get_count method"""
         return self.count
@@ -13,12 +17,9 @@ class CountedIterator:
 
     def __next__(self):
         """Defining remove method"""
-        self.count += 1
         try:
-            return next(self.iterator)
+            item = next(self.iterator)
+            self.count += 1
+            return item
         except StopIteration:
             raise StopIteration
-
-
-    def __iter__(self):
-        return self
