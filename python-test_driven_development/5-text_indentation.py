@@ -12,14 +12,13 @@ def text_indentation(text):
     """Print 2 new lines in text"""
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    punctuation = ['.', '?', ':']
-    current_line = ""
-
-    for char in text:
-        current_line += char
-        if char in punctuation:
-            print(current_line.strip())
-            print()
-
-    if current_line:
-        print(current_line.strip())
+    result = ""
+    i = 0
+    while i < len(text):
+        result += text[i]
+        if text[i] in {'.', '?', ':'}:
+            result += "\n\n"
+            while i + 1 < len(text) and text[i + 1] == ' ':
+                i += 1
+        i += 1
+    print(result.strip())
