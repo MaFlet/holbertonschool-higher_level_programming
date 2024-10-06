@@ -19,4 +19,4 @@ def load_from_json_file(filename):
     converts its back into corresponding Python object
     """
     with open(filename, 'r', encoding='utf-8') as file:
-        json.load(file)
+        return json.load(file)
