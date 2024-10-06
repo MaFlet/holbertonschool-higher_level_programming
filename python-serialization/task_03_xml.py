@@ -10,34 +10,35 @@ import xml.etree.ElementTree as ET
 
 
 def serialize_to_xml(dictionary, filename):
-    root = ET.Element('data')
-
+    root = ET.Element("data")
     for key, value in dictionary.items():
-        item = ET.SubElement(root, key)
-        item.text = str(value)
+        child = ET.SubElement(root, "item")
+        key_elem = ET.SubElement(child, "Key")
+        key_elem.text = str(key)
+        value_elem = ET.SubElement(child, "value")
+        value_elem.text = str(value)
+        value_elem.set("type", type(value).__name__)
 
     tree = ET.ElementTree(root)
-    tree.write(filename, encoding='utf-8', xml_declaration=True)
+    tree.write(filename)
 
 def deserialize_from_xml(filename):
     tree = ET.parse(filename)
     root = tree.getroot()
+    result = {}
+    for item in root.findall("item"):
+        key = item.find("key").text
+        value_elem = item.find("value")
+        value = value_elem.text
+        value_type = value_elem.get("type")
 
-    dictionary = {}
-    for item in root:
-        key = item.tag
-        value = item.text
-
-        if value.isdigit():
+        if value_type == "int":
             value = int(value)
-        elif value.lower() in ['true', 'false']:
-            value = value.lower() == 'true'
-        else:
-            try:
-                value = float(value)
-            except ValueError:
-                pass
+        elif value_type == "float":
+            value = float(value)
+        elif value_type == "bool":
+            value = value.lower() == "true"
 
-        dictionary[key] = value
+        result[key] = value
 
-    return dictionary
+    return result
