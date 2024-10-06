@@ -7,6 +7,7 @@ objects using the Pickle module
 # pylint: disable=consider-using-f-string
 # pylint: disable=dangerous-default-value
 import pickle
+import os
 
 
 class CustomObject:
@@ -36,5 +37,16 @@ class CustomObject:
         instance of CustomObject. It opens file in binary
         read mode 'rb'
         """
-        with open(filename, 'rb') as file:
-            return pickle.load(file)
+        if not os.path.isfile(filename):
+            print(f"Error: The file '{filename}' does not exist.")
+            return None
+
+        try:
+            with open(filename, 'rb') as file:
+                return pickle.load(file)
+        except EOFError:
+            print(f"Error: The file '{filename}' is empty or corrupted")
+            return None
+        except Exception as e:
+            print(f"An error occurred while deserializing: {e}")
+            return None
