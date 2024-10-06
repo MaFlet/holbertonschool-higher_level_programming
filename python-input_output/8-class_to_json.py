@@ -6,7 +6,6 @@ structure for JSON serialization of an object
 # pylint: disable=invalid-name
 # pylint: disable=consider-using-f-string
 # pylint: disable=dangerous-default-value
-import json
 
 
 def class_to_json(obj):
