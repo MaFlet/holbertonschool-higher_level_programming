@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 
 def serialize_to_xml(dictionary, filename):
     root = ET.Element('data')
+
     for key, value in dictionary.items():
         item = ET.SubElement(root, key)
         item.text = str(value)
@@ -27,15 +28,16 @@ def deserialize_from_xml(filename):
         key = item.tag
         value = item.text
 
-        try:
-            if value.isdigit():
-                value = int(value)
-            else:
-                try:
-                    value = float(value)
-                except ValueError:
-                    pass
-        except ValueError:
-            pass
+        if value.isdigit():
+            value = int(value)
+        elif value.lower() in ['true', 'false']:
+            value = value.lower() == 'true'
+        else:
+            try:
+                value = float(value)
+            except ValueError:
+                pass
+
         dictionary[key] = value
+
     return dictionary
