@@ -15,7 +15,7 @@ def fetch_and_print_posts():
     fetch posts from JSONPlaceholder
     """
     try:
-        response = requests.get('https://jsonplaceholder.typicode.com/posts', timeout=-5)
+        response = requests.get('https://jsonplaceholder.typicode.com/posts', timeout=5)
         print(f"Status Code: {response.status_code}")
 
         if response.status_code == 200:
