@@ -3,13 +3,13 @@ import json
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
-
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b'Hello, this is a simple API!.')
+
         elif self.path == '/data':
             data = {
                 "name": "John",
@@ -20,11 +20,14 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(json.dumps(data).encode('utf-8'))
+
         elif self.path == '/status':
+            status_response = {"status": "OK"}
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'{"status: "OK"}')
+            self.wfile.write(json.dumps(status_response).encode('utf-8'))
+
         else:
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
