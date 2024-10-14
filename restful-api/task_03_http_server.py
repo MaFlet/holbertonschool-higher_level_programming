@@ -17,14 +17,17 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 "city": "New York"
             }
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(data).encode('utf-8'))
 
-        elif self.path == '/status':
-            status_response = {"status": "OK"}
+        elif self.path == '/info':
+            info_response = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(status_response).encode('utf-8'))
 
@@ -32,7 +35,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'Not Found')
+            self.wfile.write(b'Endpoint not found')
 
 def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
     server_address = ('', port)
