@@ -1,47 +1,42 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
+from http.server import BaseHTTPRequestHandler
+from http.server import HTTPServer
+
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
-            self.wfile.write(b'Hello, this is a simple API!.')
+
+            self.wfile.write("Hello, this is a simple API!.".encode())
 
         elif self.path == '/data':
-            data = {
-                "name": "John",
-                "age": 30,
-                "city": "New York"
-            }
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps(data).encode('utf-8'))
+
+            d = json.dumps({"name": "John", "age": 30, "city": "New York"})
+            self.wfile.write(bytes(d, 'UTF-8'))
 
         elif self.path == '/info':
-            info_response = {
-                "version": "1.0",
-                "description": "A simple API built with http.server"
-            }
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            self.wfile.write(json.dumps(status_response).encode('utf-8'))
+
+            d = json.dumps({"version": "1.0", "description": "A simple API built with http.server"})
+            self.wfile.write(bytes(d, 'UTF-8'))
 
         else:
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'Endpoint not found')
-
-def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8000):
-    server_address = ('', port)
-    httpd = server_class(server_address, handler_class)
-    print(f'Starting server on port {port}...')
-    httpd.serve_forever()
+            self.wfile.write("Endpoint not found".encode())
 
 if __name__ == "__main__":
-    run()
+    server = HTTPServer(("localhost", 8000), SimpleHTTPRequestHandler)
+    print("Web server started at locathost:8000")
+    server.serve_forever()
