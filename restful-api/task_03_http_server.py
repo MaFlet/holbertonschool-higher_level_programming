@@ -22,6 +22,14 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             d = json.dumps({"name": "John", "age": 30, "city": "New York"})
             self.wfile.write(bytes(d, 'UTF-8'))
 
+        elif self.path == '/status':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            status_response = {"status": "OK"}
+
+            self.wfile.write(json.dumps(status_response).encode('UTF-8'))
+
         elif self.path == '/info':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
