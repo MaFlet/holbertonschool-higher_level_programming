@@ -25,9 +25,7 @@ class WebRequestHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            status_response = {"status": "OK"}
-
-            self.wfile.write(json.dumps(status_response).encode('UTF-8'))
+            self.wfile.write("OK".encode())
 
         elif self.path == '/info':
             self.send_response(200)
