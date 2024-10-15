@@ -2,6 +2,9 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from flask import abort
+import requests
+import threading
+import time
 
 
 app = Flask(__name__)
@@ -52,5 +55,46 @@ def add_user():
 def not_found(error):
     return jsonify({"error": "404 Not Found", "message": "Endpoint not found."}), 404
 
-if __name__ == "__main__": 
-    app.run(host = "localhost", port = 8000)
+def run_server():
+    app.run(host="localhost", port=8000)
+
+def run_tests():
+    time.sleep(1)  # Wait for the server to start
+    test_home()
+    test_data()
+    test_status()
+    test_add_user()
+    test_get_user()
+    print("All tests completed.")
+
+def test_home():
+    response = requests.get("http://localhost:8000/")
+    assert response.status_code == 200
+    assert response.text == "Welcome to the Flask API!"
+
+def test_data():
+    response = requests.get("http://localhost:8000/data")
+    assert response.status_code == 200
+    assert response.json() == ["jane", "john"]
+
+def test_status():
+    response = requests.get("http://localhost:8000/status")
+    assert response.status_code == 200
+    assert response.json() == {"status": "OK"}
+
+def test_add_user():
+    user_data = {"username": "bob", "name": "Bob", "age": 32, "city": "Seattle"}
+    response = requests.post("http://localhost:8000/add_user", json=user_data)
+    assert response.status_code == 201
+    assert response.json()["user"]["name"] == "Bob"
+
+def test_get_user():
+    response = requests.get("http://localhost:8000/users/bob")
+    assert response.status_code == 200
+    assert response.json() == {"name": "Bob", "age": 32, "city": "Seattle"}
+
+if __name__ == "__main__":
+    server_thread = threading.Thread(target=run_server)
+    server_thread.start()
+    run_tests()
+    server_thread.join()
