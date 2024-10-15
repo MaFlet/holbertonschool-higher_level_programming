@@ -4,7 +4,7 @@ from http.server import HTTPServer
 
 
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class WebRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == '/':
@@ -16,7 +16,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         elif self.path == '/data':
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header("Content-type", "application/json")
             self.end_headers()
 
             d = json.dumps({"name": "John", "age": 30, "city": "New York"})
@@ -24,7 +24,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
         elif self.path == '/status':
             self.send_response(200)
-            self.send_header('Content-type', 'application/json')
+            self.send_header("Content-type", "application/json")
             self.end_headers()
             status_response = {"status": "OK"}
 
@@ -45,6 +45,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write("Endpoint not found".encode())
 
 if __name__ == "__main__":
-    server = HTTPServer(("localhost", 8000), SimpleHTTPRequestHandler)
+    server = HTTPServer(("localhost", 8000), WebRequestHandler)
     print("Web server started at locathost:8000")
     server.serve_forever()
