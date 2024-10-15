@@ -3,7 +3,6 @@ from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 
-
 class WebRequestHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -20,7 +19,7 @@ class WebRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             d = json.dumps({"name": "John", "age": 30, "city": "New York"})
-            self.wfile.write(bytes(d, 'UTF-8'))
+            self.wfile.write(d.encode('UTF-8'))
 
         elif self.path == '/status':
             self.send_response(200)
@@ -36,7 +35,7 @@ class WebRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
             d = json.dumps({"version": "1.0", "description": "A simple API built with http.server"})
-            self.wfile.write(bytes(d, 'UTF-8'))
+            self.wfile.write(d.encode('UTF-8'))
 
         else:
             self.send_response(404)
@@ -46,5 +45,5 @@ class WebRequestHandler(BaseHTTPRequestHandler):
 
 if __name__ == "__main__":
     server = HTTPServer(("localhost", 8000), WebRequestHandler)
-    print("Web server started at locathost:8000")
+    print("Web server started at localhost:8000")
     server.serve_forever()
