@@ -42,7 +42,7 @@ def add_user():
     username = data['username']
     if username in users:
         abort(400, description="User already exists")
-    
+
     users[username] = {
         "name": data['name'],
         "age": data.get('age', 0),
