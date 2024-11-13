@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Items List</title>
+    </head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        {% if items %}
+        <ul>
+            {% for items in items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No items found</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>&copy; 2024 My Flask App.</p>
+    </footer>
+</body>
+</html>
