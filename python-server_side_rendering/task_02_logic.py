@@ -17,7 +17,7 @@ def contact():
 @app.route('/items')
 def items():
     items_list = [
-        "Leanardo", 
+        "Leonardo", 
         "Python Book", 
         "Flask Mug",
         "Jinja Sticker"
