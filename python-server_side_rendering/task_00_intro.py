@@ -32,7 +32,7 @@ def generate_invitations(template, attendees):
                 invitation = invitation.replace("{event_date}", attendee.get('event_date', 'N/A'))
                 invitation = invitation.replace("{event_location}", attendee.get('event_location', 'N/A'))
 
-                filename = f"ouput_{index}.txt"
+                filename = f"output_{index}.txt"
 
                 if os.path.exists(filename):
                     print(f"Warning: {filename} already exists, overwriting...")
