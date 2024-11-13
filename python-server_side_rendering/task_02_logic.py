@@ -7,9 +7,7 @@ def read_json_file(filename):
     try:
         with open(filename) as file:
             return json.load(file)
-    except FileNotFoundError:
-        return {"items": []}
-    except json.JSONDecodeError:
+    except:
         return {"items": []}
 
 @app.route('/')
@@ -27,7 +25,7 @@ def contact():
 @app.route('/items')
 def items():
     data = read_json_file('items.json')
-    items_list = data.get('items', [])
+    items_list = data.get('items', ["Leanardo", "Python Book", "Flask Mug"])
     return render_template('items.html', items=items_list)
 
 if __name__ == '__main__':
