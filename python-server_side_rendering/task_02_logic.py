@@ -3,13 +3,14 @@ import json
 
 app = Flask(__name__)
 
-def read_items(filename):
+def read_json_file(filename):
     try:
-        with open(filename) as f:
-            data = json.load(f)
-            return data.get('items', [])
-    except:
-        return []
+        with open(filename) as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {"items": []}
+    except json.JSONDecodeError:
+        return {"items": []}
 
 @app.route('/')
 def home():
@@ -25,8 +26,9 @@ def contact():
 
 @app.route('/items')
 def items():
-    items = read_items('items.json')
-    return render_template('items.html', items=items)
+    data = read_json_file('items.json')
+    items_list = data.get('items', [])
+    return render_template('items.html', items=items_list)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
