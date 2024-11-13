@@ -7,8 +7,6 @@
     <header>
         <nav>
             <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
             <a href="/items">Items</a>
         </nav>
     </header>
@@ -19,7 +17,7 @@
             <ul>
                 {% for items in items %}
                     <li>{{ item }}</li>
-            {% endfor %}
+                {% endfor %}
             </ul>
         {% else %}
             <p>No items found</p>

@@ -1,14 +1,6 @@
 from flask import Flask, render_template
-import json
 
 app = Flask(__name__)
-
-def read_json_file(filename):
-    try:
-        with open(filename) as file:
-            return json.load(file)
-    except:
-        return {"items": []}
 
 @app.route('/')
 def home():
@@ -24,8 +16,12 @@ def contact():
 
 @app.route('/items')
 def items():
-    data = read_json_file('items.json')
-    items_list = data.get('items', ["Leanardo", "Python Book", "Flask Mug"])
+    items_list = [
+        "Leanardo", 
+        "Python Book", 
+        "Flask Mug",
+        "Jinja Sticker"
+    ]
     return render_template('items.html', items=items_list)
 
 if __name__ == '__main__':
