@@ -10,21 +10,15 @@
             <a href="/items">Items</a>
         </nav>
     </header>
-    <main>
+        <ul>
         <h1>Items List</h1>
-
-        {% if items %}
-            <ul>
-                {% for item in items %}
-                    <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
+        {% if items|length == 0 %}
+              Empty
         {% else %}
-            <p>No items found</p>
+            {% for item in items %}
+                <li>{{item}}</li>
+             {% endfor %}
         {% endif %}
-    </main>
-    <footer>
-        <p>&copy; 2024 My Flask App</p>
-    </footer>
+        </ul>
 </body>
 </html>
