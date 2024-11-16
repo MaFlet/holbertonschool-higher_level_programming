@@ -25,7 +25,7 @@ def items():
                 return render_template('items.html', items= rows.get['items', []])
         else:
             return render_template('items.html', items=[])
-    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+    except (json.JSONDecodeError, IOError):
         return render_template('items.html', items=[])
 
 if __name__ == '__main__':
