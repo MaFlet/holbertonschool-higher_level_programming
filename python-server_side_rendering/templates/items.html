@@ -13,7 +13,7 @@
     <h1>Items List</h1>
     <ul>
         {% if items|length == 0 %}
-            Empty
+            <li>No items found</li>
         {% else %}
             {% for item in items %}
             <li>{{item}}</li>
