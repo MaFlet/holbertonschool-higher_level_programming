@@ -10,10 +10,10 @@
             <a href="/items">Items</a>
         </nav>
     </header>
-        <ul>
         <h1>Items List</h1>
+        <ul>
         {% if items|length == 0 %}
-              Empty
+              <li>Empty</li>
         {% else %}
             {% for item in items %}
                 <li>{{item}}</li>
