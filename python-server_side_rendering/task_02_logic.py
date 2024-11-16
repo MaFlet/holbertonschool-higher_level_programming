@@ -22,11 +22,11 @@ def items():
         if os.path.exists('items.json'):
             with open('items.json', 'r') as file:
                 rows = json.load(file)
-                return render_template('items.html', items= rows.get['items', []])
+                return render_template('items.html', items = rows.get['items', []])
         else:
-            return render_template('items.html', items=[])
+            return render_template('items.html', items = [])
     except (json.JSONDecodeError, IOError):
-        return render_template('items.html', items=[])
+        return render_template('items.html', items = [])
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
