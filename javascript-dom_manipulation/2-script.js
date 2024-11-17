@@ -1,10 +1,6 @@
+const button = document.getElementById("red_header");
 const header = document.querySelector("header");
 
-header.addEventListener("click", function() {
-    updateColor();
+button.addEventListener("click", function() {
+    header.classList.add("red");
 });
-
-function updateColor() {
-    header.style.color = "#FF0000";
-    button.textContent = 'red_header'
-}
