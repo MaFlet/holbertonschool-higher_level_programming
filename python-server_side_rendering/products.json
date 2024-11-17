@@ -10,11 +10,5 @@
         "name": "Coffee Mug",
         "category": "Home Goods",
         "price": 15.99
-    },
-    {
-        "id": 1,
-        "name": "Jarvis",
-        "category": "AI",
-        "price": 999.99
     }
 ]

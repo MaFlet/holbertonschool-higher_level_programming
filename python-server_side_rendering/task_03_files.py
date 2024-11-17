@@ -10,9 +10,7 @@ def load_json_data(id=None):
             data = json.load(file)
             if id is not None:
                 filtered_data = [product for product in data if str(product.get('id')) == str(id)]
-                if not filtered_data:
-                    return None
-                return filtered_data
+                return filtered_data if filtered_data else None
             return data
     except (FileNotFoundError, json.JSONDecodeError):
         return []
@@ -26,9 +24,7 @@ def load_csv_data(id=None):
                 product['price'] = float(product['price'])
             if id is not None:
                 filtered_data = [product for product in data if str(product.get('id')) == str(id)]
-                if not filtered_data:
-                    return None
-                return filtered_data
+                return filtered_data if filtered_data else None
             return data
     except FileNotFoundError:
         return []
@@ -37,47 +33,26 @@ def load_csv_data(id=None):
 def home():
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@app.route('/items')
-def items():
-    items_list = []
-
-    with open("items.json", 'r') as file:
-        rows = json.load(file)
-    for key, value in rows.items():
-        items_list = value
-
-    return render_template('items.html', items = items_list)
-
 @app.route('/products')
 def products():
-    source = request.args.get('source')
+    source = request.args.get('source', '')
     product_id = request.args.get('id')
-    error_message = None
     items = []
 
-    if source not in ['json', 'csv']:
-        error_message = "Wrong source"
-    else:
-        if source == 'json':
-            items = load_json_data(product_id)
-        else:
-            items = load_csv_data(product_id)
+    if source == 'json':
+        items = load_json_data(product_id) or []
+    elif source == 'csv':
+        items = load_csv_data(product_id) or []
 
-        if items is None:
-            error_message = "Product not found"
-            items = []
+    error_message = "Wrong source" if source and source not in ['json', 'csv'] else None
+
+    if items is None:
+        error_message = "Product not found"
+        items = []
 
     return render_template("product_display.html",
-                           items = items,
-                           error_message = error_message)
+                           items=items,
+                           error_message=error_message)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
