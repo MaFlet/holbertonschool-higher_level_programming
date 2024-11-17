@@ -41,18 +41,20 @@ def home():
 def products():
     source = request.args.get('source', '')
     product_id = request.args.get('id')
+    error_message = None
     items = []
 
-    if source == 'json':
-        items = load_json_data(product_id) or []
-    elif source == 'csv':
-        items = load_csv_data(product_id) or []
-
-    error_message = "Wrong source" if source and source not in ['json', 'csv'] else None
-
-    if items is None:
-        error_message = "Product not found"
-        items = []
+    if source not in ['json', 'csv']:
+        error_message = "Wrong source"
+    else:
+        if source == 'json':
+            items = load_json_data(product_id)
+        else:
+            items = load_csv_data(product_id)
+        
+        if items is None or (product_id and not items):
+            error_message = "Product not found"
+            items = []
 
     return render_template("product_display.html",
                            items=items,
