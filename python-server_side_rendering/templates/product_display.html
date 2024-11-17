@@ -35,7 +35,6 @@
 
     {% if error_message %}
         <p class="error">{{ error_message }}</p>
-    {% else %}
         {% elif items|length == 0 %}
             <p>No items found</p>
         {% else %}
@@ -60,6 +59,5 @@
                 </tbody>
             </table>
         {% endif %}
-    {% endif % }
 </body>
 </html>

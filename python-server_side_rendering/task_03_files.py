@@ -52,7 +52,7 @@ def products():
         else:
             items = load_csv_data(product_id)
         
-        if items is None or (product_id and not items):
+        if items is None:
             error_message = "Product not found"
             items = []
 
