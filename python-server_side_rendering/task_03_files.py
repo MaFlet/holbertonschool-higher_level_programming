@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 def read_json_data(id=None):
     try:
-        with open("products.json", "r") as file:
+        with open('products.json', 'r') as file:
             data = json.load(file)
             if id is not None:
                 filtered_data = [product for product in data if str(product.get('id')) == str(id)]
@@ -20,7 +20,7 @@ def read_json_data(id=None):
     
 def read_csv_data(id=None):
     try:
-        with open("products.csv", "r") as file:
+        with open('products.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             data = list(csv_reader)
             for product in data:
@@ -62,22 +62,22 @@ def products():
     source = request.args.get('source')
     product_id = request.args.get('id')
     error_message = None
-    products = []
+    items = []
 
     if source not in ['json', 'csv']:
         error_message = "Wrong source"
     else:
         if source == 'json':
-            products = read_json_data(product_id)
+            items = read_json_data(product_id)
         else:
-            products = read_csv_data(product_id)
+            items = read_csv_data(product_id)
 
         if products is None:
             error_message = "Product not found"
-            products = []
+            items = []
 
     return render_template("product_display.html",
-                           products = products,
+                           items = items,
                            error_message = error_message)
 
 if __name__ == '__main__':

@@ -36,22 +36,24 @@
     {% if products|length == 0 %}
         <p class="error">{{ error_message }}</p>
     {% elif items|length == 0 %}
-        <p>No products found</p>
+        <p>No items found</p>
     {% else %}
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Category</th>
                     <th>Price</th>
                 </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+                {% for item in items %}
                     <tr>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.category }}</td>
-                        <td>{{ "%.2f"|format(product.price) }}</td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ "%.2f"|format(item.price) }}</td>
                     </tr>
                     {% endfor %}
             </tbody>
