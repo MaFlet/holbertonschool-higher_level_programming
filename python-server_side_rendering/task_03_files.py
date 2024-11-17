@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request
 import json
 import csv
-import os
 
 app = Flask(__name__)
 
-def read_json_data(id=None):
+def load_json_data(id=None):
     try:
         with open('products.json', 'r') as file:
             data = json.load(file)
@@ -18,7 +17,7 @@ def read_json_data(id=None):
     except (FileNotFoundError, json.JSONDecodeError):
         return []
     
-def read_csv_data(id=None):
+def load_csv_data(id=None):
     try:
         with open('products.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
@@ -68,11 +67,11 @@ def products():
         error_message = "Wrong source"
     else:
         if source == 'json':
-            items = read_json_data(product_id)
+            items = load_json_data(product_id)
         else:
-            items = read_csv_data(product_id)
+            items = load_csv_data(product_id)
 
-        if products is None:
+        if items is None:
             error_message = "Product not found"
             items = []
 
