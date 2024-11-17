@@ -10,7 +10,9 @@ def load_json_data(id=None):
             data = json.load(file)
             if id is not None:
                 filtered_data = [product for product in data if str(product.get('id')) == str(id)]
-                return filtered_data if filtered_data else None
+                if not filtered_data:
+                    return None
+                return filtered_data
             return data
     except (FileNotFoundError, json.JSONDecodeError):
         return []
@@ -24,7 +26,9 @@ def load_csv_data(id=None):
                 product['price'] = float(product['price'])
             if id is not None:
                 filtered_data = [product for product in data if str(product.get('id')) == str(id)]
-                return filtered_data if filtered_data else None
+                if not filtered_data:
+                    return None
+                return filtered_data
             return data
     except FileNotFoundError:
         return []
