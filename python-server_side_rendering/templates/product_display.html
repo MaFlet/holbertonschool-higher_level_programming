@@ -35,29 +35,31 @@
 
     {% if error_message %}
         <p class="error">{{ error_message }}</p>
-    {% elif items|length == 0 %}
-        <p>No items found</p>
     {% else %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
+        {% elif items|length == 0 %}
+            <p>No items found</p>
+        {% else %}
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.category }}</td>
-                        <td>{{ "%.2f"|format(item.price|float) }}</td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
                     </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.category }}</td>
+                            <td>{{ "%.2f"|format(item.price|float) }}</td>
+                        </tr>
                     {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% endif % }
 </body>
 </html>
