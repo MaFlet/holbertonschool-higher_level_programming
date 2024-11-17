@@ -33,7 +33,7 @@
     </header>
     <h1>Product List</h1>
 
-    {% if products|length == 0 %}
+    {% if error_message %}
         <p class="error">{{ error_message }}</p>
     {% elif items|length == 0 %}
         <p>No items found</p>
