@@ -53,7 +53,7 @@
                         <td>{{ item.id }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.category }}</td>
-                        <td>{{ "%.2f"|format(item.price) }}</td>
+                        <td>{{ "%.2f"|format(item.price|float) }}</td>
                     </tr>
                     {% endfor %}
             </tbody>
