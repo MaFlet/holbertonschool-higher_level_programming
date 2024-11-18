@@ -1,6 +1,8 @@
-const button = document.getElementById("red_header");
-const header = document.querySelector("header");
+document.addEventListener('DOMContentLoaded', function() {
+    const redHeader = document.querySelector("#red_header");
+    const header = document.querySelector("header");
 
-button.addEventListener("click", function() {
-    header.classList.add("red");
+    redHeader.addEventListener('click', function() {
+        header.classList.add("red");
+    });
 });
