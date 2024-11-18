@@ -1,7 +1,9 @@
-const button = document.getElementById("toggle_header");
-const header = document.querySelector("header");
+document.addEventListener('DOMContentLoaded', function() {
+    const redHeader = document.querySelector("#toggle_header");
+    const header = document.querySelector("header");
 
-button.addEventListener("click", function() {
-    header.classList.toggle("red");
-    header.classList.toggle("green");
+    toggleHeader.addEventListener('click', function() {
+        header.classList.toggle("red");
+        header.classList.toggle("green")
+    });
 });
